@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Show</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .slide {
+            display: none;
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .active {
+            display: block;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slide active">
+        <h1>Slide 1</h1>
+        <p>Welcome to the first slide!</p>
+        <img src="Certificates/CertificateOfCompletion_Business Intelligence for Consultants.pdf" width="auto"
+            height="auto" />
+    </div>
+
+    <div class="slide">
+        <h1>Slide 2</h1>
+        <p>This is the second slide with more content.</p>
+    </div>
+
+    <div class="slide">
+        <h1>Slide 3</h1>
+        <p>Here’s the third slide. Keep going!</p>
+    </div>
+
+    <div class="buttons">
+        <button onclick="prevSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+    </script>
+
+</body>
+
+</html>
